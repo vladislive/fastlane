@@ -68,7 +68,7 @@ module FastlaneCore
       # we also allow nil values, which do not have to be verified.
       if value
         # Verify that value is the type that we're expecting, if we are expecting a type
-        if data_type && !value.kind_of?(data_type)
+        if data_type && !auto_convert_value(value).kind_of?(data_type)
           UI.user_error!("'#{self.key}' value must be a #{data_type}! Found #{value.class} instead.")
         end
 
